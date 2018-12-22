@@ -1,0 +1,13 @@
+Xcursor.theme: Vanilla-DMZ
+
+! ===============================================
+!                      ROFI
+! ===============================================
+
+rofi.color-enabled: true
+rofi.color-window: #DD333333
+rofi.color-normal: #00333333, #F6F9FC, #00333333, #0084d1, #FFFFFF
+rofi.color-active: #00333333, #64c861, #00333333, #64c861, #FFFFFF
+rofi.bw: 0
+!rofi.padding: 300
+rofi.font: Roboto Mono Regular 10

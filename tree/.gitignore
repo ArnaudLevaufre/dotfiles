@@ -1,0 +1,8 @@
+*.orig
+__pycache__
+*.sqlite3
+*.sqlite
+*.db
+*.map
+.sass-cache
+venv
