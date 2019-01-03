@@ -35,8 +35,8 @@ floating_modifier $mod
 bindsym Print exec sh /home/arnaud/.install/screenshot/screenshot.sh
 
 # start a terminal
-bindsym $mod+Return exec urxvt
-bindcode $mod+49 exec urxvt
+bindsym $mod+Return exec kitty
+bindcode $mod+49 exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -140,7 +140,7 @@ bindsym XF86AudioNext exec "mpc next"
 bindsym XF86AudioPrev exec "mpc prev"
 bindsym XF86AudioPlay exec "mpc toggle"
 bindsym XF86AudioStop exec "mpc stop"
-bindsym XF86Tools exec "urxvt -e ncmpcpp"
+bindsym XF86Tools exec "kitty ncmpcpp"
 
 # sound
 bindsym XF86AudioMute exec "amixer set Master togglemute"
@@ -157,7 +157,7 @@ bindsym Cancel exec "i3lock -e -u -i ~/.i3/lock.png"
 
 bindsym XF86Mail exec "thunderbird"
 bindsym XF86Explorer exec "/home/arnaud/.bin/nightly"
-bindsym XF86Calculator exec "urxvt -e python"
+bindsym XF86Calculator exec "kitty python"
 
 # Ncmpcpp
 #bindcode 171 exec "mpc -h 192.168.0.101 next"
