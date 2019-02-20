@@ -92,8 +92,8 @@ URxvt*cursorColor2:                     #FFFFFF
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
-URxvt.font:                             xft:DejaVu Sans Mono:size=8.5
-URxvt.boldFont:                         xft:DejaVu Sans Mono:bold:size=8.5
+URxvt.font:                             xft:DejaVu Sans Mono:size=9
+URxvt.boldFont:                         xft:DejaVu Sans Mono:bold:size=9
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
 ! URxvt*intensityStyles:                boolean
