@@ -119,7 +119,7 @@ rofi.color-normal:                   #282C34, #ABB2BF, #282C34, #3E4452, #61AFEF
 ! "Color scheme for active row" Set from: XResources
 rofi.color-active:                   #282C34, #98C379, #282C34, #3E4452, #61AFEF
 ! "Color scheme window" Set from: XResources
-rofi.color-window:                   #282C34, #3E4452
+rofi.color-window:                   #282C34, #61AFEF
 ! "Max history size (WARNING: can cause slowdowns when set to high)." Set from: Default
 ! rofi.max-history-size:               25
 ! "Hide the prefix mode prefix on the combi view." Set from: Default
