@@ -7,7 +7,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:Liberation Mono 10
+font pango:DejaVu Sans Mono 9
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -202,18 +202,16 @@ bar {
 		position top
         status_command i3status
 
-        font pango:Liberation Mono 10
+        font pango:DejaVu Sans Mono 9
 
 		colors {
-            # blue #0084d1
-            focused_workspace  #222222 #222222 #0084d1
-            #old blue#75A8F0
-            active_workspace   #222222 #222222 #ffffff
-            inactive_workspace #222222 #222222 #888888
-            urgent_workspace   #2f343a #900000 #ffffff
-            binding_mode       #2f343a #900000 #ffffff
+            focused_workspace  #282C34 #282C34 #61AFEF
+            active_workspace   #282C34 #282C34 #ABB2BF
+            inactive_workspace #282C34 #282C34 #5C6370
+            urgent_workspace   #282C34 #282c34 #E06C75
+            binding_mode       #282C34 #282c34 #E06C75
 
-			background #222222
+			background #282C34
 			statusline #FFFFFF
 		}
 }
