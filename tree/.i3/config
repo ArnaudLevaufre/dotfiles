@@ -45,7 +45,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec dmenu_run
 # The folowing commant require dmenu-xft-height
 bindsym $mod+d exec "rofi -lines 10 -show drun "
-bindsym $mod+Tab exec "rofi -lines 10 -fullscreen -show"
+bindsym $mod+Tab exec "rofi -lines 10 -show"
 #bindsym $mod+d exec sh /home/arnaud/.bin/dmenu
 
 # bindsym $mod+d exec cat ~/.i3/dmenu_list | sort -u | dmenu "$@" | /bin/sh &

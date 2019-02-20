@@ -1,20 +1,6 @@
 Xcursor.theme: Vanilla-DMZ
 
 ! ===============================================
-!                      ROFI
-! ===============================================
-
-rofi.background: #333
-rofi.foreground: #1aa
-rofi.highlightbg: #1aa
-rofi.highlightfg: #111
-rofi.bordercolor: #277
-rofi.font: times 10
-rofi.padding: 3
-rofi.lines: 5
-rofi.borderwidth: 3
-
-! ===============================================
 !                      URXVT
 ! ===============================================
 
