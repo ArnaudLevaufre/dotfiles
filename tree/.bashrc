@@ -93,6 +93,17 @@ function git_prompt {
 	fi
 }
 
+function jobs_prompt {
+    jobs_count=$(jobs | wc -l)
+    if [ $jobs_count -gt 1 ];
+    then
+        echo " running ${light_cyan}${jobs_count} ${white}jobs";
+    elif [ $jobs_count -gt 0 ];
+    then
+        echo " running ${light_cyan}${jobs_count} ${white}job";
+    fi
+}
+
 function fancy_pwd {
 	DIR=$(/bin/pwd | /bin/sed -r "s#$HOME#~#")
 	if [ $(grep -o "\/" <<< $DIR | wc -l) -gt 4 ]; then
@@ -110,7 +121,7 @@ function prompt {
 	if [ $status -gt 0 ]; then
 		echo_last="${white} with error ${light_red}$status${white}"
 	fi
-	echo -e "${light_green}$(/bin/whoami)${white} at ${light_green}$(/bin/hostname)${echo_last}${white} in${light_blue}$(fancy_pwd)${white} $(git_prompt)\n::::| "
+    echo -e "${light_green}$(/bin/whoami)${white} at ${light_green}$(/bin/hostname)${echo_last}${white} in${light_blue}$(fancy_pwd)${white}$(git_prompt)$(jobs_prompt)\n::::| "
 }
 
 PS1='$(prompt)\[\033[0m\]'
