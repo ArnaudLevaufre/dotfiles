@@ -212,7 +212,7 @@ bar {
             binding_mode       #282C34 #282c34 #E06C75
 
 			background #282C34
-			statusline #FFFFFF
+			statusline #ABB2BF
 		}
 }
 
