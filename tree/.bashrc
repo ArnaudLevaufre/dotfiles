@@ -116,15 +116,20 @@ function fancy_pwd {
     fi;
 }
 
-function prompt {
-    status=$?
-    if [ $status -gt 0 ]; then
-        echo_last="${white} with error ${light_red}$status${white}"
-    fi
-    echo -e "${light_green}$(/bin/whoami)${white} at ${light_green}$(/bin/hostname)${echo_last}${white} in${light_blue}$(fancy_pwd)${white}$(git_prompt)$(jobs_prompt)\n::::| "
+function prompt_cmd {
+    last=$?;
+    if [ $last -gt 0 ] ; then echo_last="${white} with error ${light_red}$last${white}" ; fi
+    if [ $UID -eq 0 ] ; then user_color="${light_red}" ; else user_color="${light_green}" ; fi
+    if [ -z "$SSH_TTY" ] ; then host_color="${light_green}" ; else host_color="${light_red}" ; fi
+    echo -e "${user_color}$(/bin/whoami)${white} at ${host_color}$(/bin/hostname)${echo_last}${white} in${light_blue}$(fancy_pwd)${white}$(git_prompt)$(jobs_prompt)\e[0m"
 }
 
-PS1='$(prompt)\[\033[0m\]'
+PROMPT_COMMAND="prompt_cmd"
+PS1="\[${light_cyan}\]\$\[\e[0m\] "
+PS2="\[${light_magenta}\]>\[\e[0m\] "
+PS3=$'\e[01;35m\#?\e[0m ' # PS3 rewrite seems to be tricky: https://www.linuxquestions.org/questions/linux-general-1/bash-prompt-can%27t-change-ps3-4175549239/#post5397699
+PS4="\[${light_magenta}\]+\[\e[0m\] "
+
 
 # source aliases
 if [ -f ~/.bash_aliases ]; then
