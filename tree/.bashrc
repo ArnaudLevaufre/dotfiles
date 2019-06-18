@@ -117,10 +117,10 @@ function fancy_pwd {
 }
 
 function prompt_cmd {
-    last=$?;
-    if [ $last -gt 0 ] ; then echo_last="${white} with error ${light_red}$last${white}" ; fi
-    if [ $UID -eq 0 ] ; then user_color="${light_red}" ; else user_color="${light_green}" ; fi
-    if [ -z "$SSH_TTY" ] ; then host_color="${light_green}" ; else host_color="${light_red}" ; fi
+    local last=$?;
+    if [ $last -gt 0 ] ; then local echo_last="${white} with error ${light_red}$last${white}" ; fi
+    if [ $UID -eq 0 ] ; then local user_color="${light_red}" ; else local user_color="${light_green}" ; fi
+    if [ -z "$SSH_TTY" ] ; then local host_color="${light_green}" ; else local host_color="${light_red}" ; fi
     echo -e "${user_color}$(/bin/whoami)${white} at ${host_color}$(/bin/hostname)${echo_last}${white} in${light_blue}$(fancy_pwd)${white}$(git_prompt)$(jobs_prompt)\e[0m"
 }
 
