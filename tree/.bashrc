@@ -69,25 +69,26 @@ function git_prompt {
 
         # git modifications
         ADDED=$(/usr/bin/git status --porcelain | sed -rn '/^A/p' | wc -l )
-        if [ $ADDED -gt 0 ]; then ADDED=" ${green}A:"$ADDED;
+        if [ "$ADDED" -gt 0 ]; then ADDED=" ${green}A:"$ADDED;
         else ADDED=""; fi
 
         REMOVED=$(/usr/bin/git status --porcelain | sed -rn '/^D/p' | wc -l )
-        if [ $REMOVED -gt 0 ]; then REMOVED=" ${light_red}D:"$REMOVED;
+        if [ "$REMOVED" -gt 0 ]; then REMOVED=" ${light_red}D:"$REMOVED;
         else REMOVED=""; fi
 
         MODIFIED=$(/usr/bin/git status --porcelain | sed -rn '/^ ?M/p' | wc -l )
-        if [ $MODIFIED -gt 0 ]; then MODIFIED=" ${blue}M:"$MODIFIED;
+        if [ "$MODIFIED" -gt 0 ]; then MODIFIED=" ${blue}M:"$MODIFIED;
         else MODIFIED=""; fi
 
         UNTRACKED=$(/usr/bin/git status --porcelain | sed -rn '/^\?\?/p' | wc -l )
-        if [ $UNTRACKED -gt 0 ]; then UNTRACKED=" ${magenta}U:"$UNTRACKED;
+        if [ "$UNTRACKED" -gt 0 ]; then UNTRACKED=" ${magenta}U:"$UNTRACKED;
         else UNTRACKED=""; fi
 
         echo " on ${light_yellow}$BRANCH$ADDED$REMOVED$MODIFIED$UNTRACKED${white}"
     else
-        $(PAGER=tee git log 2>&1 | grep -i "not a git" &> /dev/null)
-        if [ $? -ne 0 ]; then
+        local is_git;
+        is_git=$(git log 2>&1 | grep -i "not a git" &> /dev/null)
+        if [ -n "$is_git" ]; then
             echo " on empty git repository"
         fi
     fi
@@ -95,24 +96,28 @@ function git_prompt {
 
 function jobs_prompt {
     jobs_count=$(jobs | wc -l)
-    if [ $jobs_count -gt 1 ];
+    if [ "$jobs_count" -gt 1 ];
     then
         echo " running ${light_cyan}${jobs_count} ${white}jobs";
-    elif [ $jobs_count -gt 0 ];
+    elif [ "$jobs_count" -gt 0 ];
     then
         echo " running ${light_cyan}${jobs_count} ${white}job";
     fi
 }
 
 function fancy_pwd {
-    DIR=$(/bin/pwd | /bin/sed -r "s#$HOME#~#")
-    if [ $(grep -o "\/" <<< $DIR | wc -l) -gt 4 ]; then
-        local DIR_LIST=( $(echo $DIR | sed -rn 's_/_\n_pg' ) )
-        local DIR_ROOT=""
-        if [ ${DIR_LIST[0]} != "~" ]; then DIR_ROOT="/"; fi
-        echo " "${DIR_ROOT}${DIR_LIST[0]}"/"${DIR_LIST[1]}"/.../"${DIR_LIST[-2]}"/"${DIR_LIST[-1]}
+    local DIR
+    local DIR_LIST
+    local DIR_ROOT
+
+    DIR="$(/bin/pwd | /bin/sed -r "s#$HOME#~#")"
+    if [ "$(grep -o "\/" <<< "$DIR" | wc -l)" -gt 4 ]; then
+        DIR_LIST=( $(echo "$DIR" | sed -rn 's_/_\n_pg' ) )
+        DIR_ROOT=""
+        if [ "${DIR_LIST[0]}" != "~" ]; then DIR_ROOT="/"; fi
+        echo " ${DIR_ROOT}${DIR_LIST[0]}/${DIR_LIST[1]}/.../${DIR_LIST[-2]}/${DIR_LIST[-1]}"
     else
-        echo " "$DIR
+        echo " $DIR"
     fi;
 }
 
