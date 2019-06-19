@@ -130,7 +130,7 @@ function prompt_cmd {
 }
 
 PROMPT_COMMAND="prompt_cmd"
-PS1="\[${light_cyan}\]\$\[\e[0m\] "
+PS1="\[${light_cyan}\]\\$\[\e[0m\] "
 PS2="\[${light_magenta}\]>\[\e[0m\] "
 PS3=$'\e[01;35m\#?\e[0m ' # PS3 rewrite seems to be tricky: https://www.linuxquestions.org/questions/linux-general-1/bash-prompt-can%27t-change-ps3-4175549239/#post5397699
 PS4="\[${light_magenta}\]+\[\e[0m\] "
