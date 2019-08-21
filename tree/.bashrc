@@ -32,6 +32,10 @@ export NPM_PACKAGES="${HOME}/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 
+if [ ! -z "$TMUX"  ]
+then
+    export TERM=tmux-256color
+fi
 
 # append to the history file, don't overwrite it
 shopt -s histappend
