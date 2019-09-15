@@ -1,0 +1,43 @@
+general {
+    colors = true
+    color_bad = "#E06C75"
+    color_degraded = "#E5C07B"
+    color_separator = "#282C34"
+    color_good = "#98C379"
+    interval = 1
+}
+
+order += "battery all"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "tztime local"
+
+battery all {
+    format = "%status %percentage %remaining"
+    format_down = ""
+}
+
+cpu_usage {
+    format = ""
+    max_threshold = 90
+    format_above_threshold = "CPU %usage"
+    degraded_threshold = 99
+    format_above_degraded_threshold = "CPU %usage"
+}
+
+disk "/" {
+    format = ""
+    low_threshold = 10
+    format_below_threshold = "DISK %percentage_avail"
+}
+
+memory {
+    format = ""
+    threshold_degraded = "512M"
+    format_degraded = "MEMORY %available"
+}
+
+tztime local {
+    format = "%Y-%m-%d %H:%M:%S"
+}
