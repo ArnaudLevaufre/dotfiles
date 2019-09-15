@@ -23,14 +23,9 @@
 # SOFTWARE.
 
 
-export EDITOR=vim
-export PAGER=less
 export HISTCONTROL=ignoreboth
 export HISTSIZE=-1
 export HISTFILESIZE=-1
-export NPM_PACKAGES="${HOME}/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$NPM_PACKAGES/bin:$PATH"
 
 if [ ! -z "$TMUX"  ]
 then
