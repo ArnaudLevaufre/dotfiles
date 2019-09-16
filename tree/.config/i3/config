@@ -31,9 +31,6 @@ client.urgent           #E06C75 #E06C75 #282C34 #282C34
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# screenshots
-bindsym Print exec sh /home/arnaud/.install/screenshot/screenshot.sh
-
 # start a terminal
 bindsym $mod+Return exec kitty
 bindcode $mod+49 exec kitty
@@ -41,18 +38,9 @@ bindcode $mod+49 exec kitty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-# The folowing commant require dmenu-xft-height
+# Start rofi
 bindsym $mod+d exec "rofi -lines 10 -show drun "
 bindsym $mod+Tab exec "rofi -lines 10 -show"
-#bindsym $mod+d exec sh /home/arnaud/.bin/dmenu
-
-# bindsym $mod+d exec cat ~/.i3/dmenu_list | sort -u | dmenu "$@" | /bin/sh &
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -135,7 +123,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Mocp
+# audio shortcut controlling mpd via mpc
 bindsym XF86AudioNext exec "mpc next"
 bindsym XF86AudioPrev exec "mpc prev"
 bindsym XF86AudioPlay exec "mpc toggle"
@@ -147,51 +135,36 @@ bindsym XF86AudioMute exec "amixer set Master togglemute"
 bindsym XF86AudioLowerVolume exec "amixer -c 0 set Master 2dB-"
 bindsym XF86AudioRaiseVolume exec "amixer -c 0 set Master 2dB+"
 
-# other
-
-# bindcode 166 exec "/bin/false"
-# bindcode 167 exec "/bin/false"
-bindsym Cancel exec "i3lock -e -u -i ~/.i3/lock.png"
-# bindcode 181 exec "/bin/false"
-# bindcode 180 exec "/bin/false"
-
-bindsym XF86Mail exec "thunderbird"
-bindsym XF86Explorer exec "/home/arnaud/.bin/nightly"
-bindsym XF86Calculator exec "kitty python"
-
-# Ncmpcpp
-#bindcode 171 exec "mpc -h 192.168.0.101 next"
-#bindcode 173 exec "mpc -h 192.168.0.101 prev"
-#bindcode 172 exec "mpc -h 192.168.0.101 toggle"
-#bindcode 174 exec "mpc -h 192.168.0.101 stop"
+# lock screen
+bindsym $mod+F12 exec "i3lock -c 282C34 --insidevercolor=282C34FF --insidewrongcolor=282C34FF --insidecolor=282C34FF --ringvercolor=5C6370FF --ringwrongcolor=BE5046FF --ringcolor=5C6370FF --linecolor=282C34FF --keyhlcolor=98C379FF --bshlcolor=E5C07BFF --separatorcolor=282C34FF --verifcolor=ABB2BFFF --wrongcolor=ABB2BFFF --layoutcolor=ABB2BFFF -k --timecolor=ABB2BFFF --datecolor=ABB2BFFF"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        bindsym Shift+Left resize shrink width 1 px or 1 ppt
-        bindsym Shift+Down resize grow height 1 px or 1 ppt
-        bindsym Shift+Up resize shrink height 1 px or 1 ppt
-        bindsym Shift+Right resize grow width 1 px or 1 ppt
+    bindsym Shift+Left resize shrink width 1 px or 1 ppt
+    bindsym Shift+Down resize grow height 1 px or 1 ppt
+    bindsym Shift+Up resize shrink height 1 px or 1 ppt
+    bindsym Shift+Right resize grow width 1 px or 1 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -199,31 +172,25 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-		position top
-        status_command i3status
+    position top
+    status_command i3status
 
-        font pango:DejaVu Sans Mono 9
+    font pango:DejaVu Sans Mono 9
 
-		colors {
-            focused_workspace  #282C34 #282C34 #61AFEF
-            active_workspace   #282C34 #282C34 #ABB2BF
-            inactive_workspace #282C34 #282C34 #5C6370
-            urgent_workspace   #282C34 #282c34 #E06C75
-            binding_mode       #282C34 #282c34 #E06C75
+    colors {
+        focused_workspace  #282C34 #282C34 #61AFEF
+        active_workspace   #282C34 #282C34 #ABB2BF
+        inactive_workspace #282C34 #282C34 #5C6370
+        urgent_workspace   #282C34 #282c34 #E06C75
+        binding_mode       #282C34 #282c34 #E06C75
 
-			background #282C34
-			statusline #ABB2BF
-		}
+        background #282C34
+        statusline #ABB2BF
+    }
 }
 
 
 # Exec at startup
-
-#exec --no-startup-id feh --bg-fill ~/SANDBOX/Python/BonjourMadameWallpaper/wallpaper.jpg
-#exec --no-startup-id feh --bg-fill ~/.i3/bg.jpg
-#exec_always --no-startup-id polybar left
-#exec_always --no-startup-id polybar middle
-#exec_always --no-startup-id polybar right
-exec --no-startup-id ~/.fehbg # restore last feh backroung
+exec --no-startup-id ~/.fehbg # restore last feh background
 exec --no-startup-id xhost +local:
 
