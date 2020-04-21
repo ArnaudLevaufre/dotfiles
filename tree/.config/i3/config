@@ -131,9 +131,11 @@ bindsym XF86AudioStop exec "mpc stop"
 bindsym XF86Tools exec "kitty ncmpcpp"
 
 # sound
-bindsym XF86AudioMute exec "amixer set Master togglemute"
-bindsym XF86AudioLowerVolume exec "amixer -c 0 set Master 2dB-"
-bindsym XF86AudioRaiseVolume exec "amixer -c 0 set Master 2dB+"
+bindsym XF86AudioMute exec "pulsemixer --toggle-mute"
+bindsym XF86AudioLowerVolume exec "pulsemixer --change-volume -10"
+bindsym XF86AudioRaiseVolume exec "pulsemixer --change-volume +10"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
 
 # lock screen
 bindsym $mod+F12 exec "i3lock -c 282C34 --insidevercolor=282C34FF --insidewrongcolor=282C34FF --insidecolor=282C34FF --ringvercolor=5C6370FF --ringwrongcolor=BE5046FF --ringcolor=5C6370FF --linecolor=282C34FF --keyhlcolor=98C379FF --bshlcolor=E5C07BFF --separatorcolor=282C34FF --verifcolor=ABB2BFFF --wrongcolor=ABB2BFFF --layoutcolor=ABB2BFFF -k --timecolor=ABB2BFFF --datecolor=ABB2BFFF"
