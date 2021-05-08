@@ -125,11 +125,11 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # audio shortcut controlling mpd via mpc
-bindsym XF86AudioNext exec "mpc next"
-bindsym XF86AudioPrev exec "mpc prev"
-bindsym XF86AudioPlay exec "mpc toggle"
-bindsym XF86AudioStop exec "mpc stop"
-bindsym XF86Tools exec "kitty ncmpcpp"
+bindsym XF86AudioNext exec "playerctl -p spotify next"
+bindsym XF86AudioPrev exec "playerctl -p spotify previous"
+bindsym XF86AudioPlay exec "playerctl -p spotify play-pause"
+bindsym XF86AudioStop exec "playerctl -p spotify stop"
+bindsym XF86Tools exec "spotify"
 
 # sound
 bindsym XF86AudioMute exec "pulsemixer --toggle-mute"
