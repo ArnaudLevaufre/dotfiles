@@ -199,4 +199,5 @@ bar {
 # Exec at startup
 exec --no-startup-id ~/.fehbg # restore last feh background
 exec --no-startup-id xhost +local:
+exec --no-startup-id xcompmgr
 
