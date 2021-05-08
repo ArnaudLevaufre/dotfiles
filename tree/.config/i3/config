@@ -42,6 +42,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -lines 10 -show drun "
 bindsym $mod+Tab exec "rofi -lines 10 -show"
 
+# Open file explorer
+bindsym $mod+x exec "dolphin"
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
