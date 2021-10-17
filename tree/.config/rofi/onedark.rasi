@@ -1,0 +1,33 @@
+* {
+    background-color: #282C34;
+    color: #ABB2BF;
+}
+
+window {
+    border: 2;
+    border-color: #61AFEF;
+    padding: 5;
+    width: 800;
+}
+
+listview {
+    lines: 10;
+}
+
+element {
+    padding: 5;
+}
+
+element selected, element-icon selected, element-text selected {
+    background-color: #61AFEF;
+    color: #282C34;
+}
+
+entry {
+    padding: 5;
+    text-style: bold;
+}
+
+prompt {
+    enabled: false;
+}
