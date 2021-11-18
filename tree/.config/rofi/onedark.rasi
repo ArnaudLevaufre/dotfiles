@@ -19,8 +19,8 @@ element {
 }
 
 element selected, element-icon selected, element-text selected {
-    background-color: #61AFEF;
-    color: #282C34;
+    background-color: #3E4452;
+    color: #61AFEF;
 }
 
 entry {
